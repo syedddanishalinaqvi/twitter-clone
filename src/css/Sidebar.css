@@ -1,0 +1,23 @@
+.sidebar{
+    height: 100%;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sidebar-content{
+    display:flex;
+    flex-direction: column;
+    padding-left: 60px;
+}
+.items{
+    display: flex;
+    flex-direction: column;
+}
+.home-icon>a>.item-content:hover{
+    background-color: white;
+    color:black
+}
+.profile{
+    display: flex;
+}

@@ -1,0 +1,21 @@
+.item{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+    padding: 10px 0px 10px;
+}
+.item-content{
+display: flex;
+border-radius: 20px;
+padding: 10px 10px 10px;
+font-size: 30px;
+font-weight: 200;
+}
+.item-content:hover{
+    background-color: grey;
+    color:white
+}
+.icon-content{
+    padding-left: 25px;
+}
