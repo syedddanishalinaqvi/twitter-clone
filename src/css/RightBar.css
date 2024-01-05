@@ -1,0 +1,23 @@
+.rightbar{
+    padding-left: 20px;
+    padding-top: 15px;
+}
+.follow-block{
+    background-color:rgb(211,211,211,0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.follow-block>p{
+    font-size: 25px;
+    padding:18px;
+    font-weight: 500;
+}
+.follow-block>a{
+    text-decoration: none;
+    color: rgb(29, 155, 240);
+    padding:10px 0px 10px 20px;
+}
+.follow{
+    display:flex;
+}

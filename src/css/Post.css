@@ -1,0 +1,67 @@
+.post{
+    padding:15px;
+    display: flex;
+    width: 100%-15px;
+    height: 100%;
+    border-bottom:1px solid rgb(0,0,0,0.2) ;
+}
+.post-dp>a>img{
+    border-radius: 50%;
+}
+.post-content{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.text-area>textarea{
+    position: relative;
+    border: none;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    font-size: 25px;
+    font-weight: 100;
+    font-family: sans-serif;
+    padding:15px;
+    outline:none;
+    overflow: hidden;
+    word-wrap: break-word;
+    display: flex;
+    border-bottom:1px solid rgb(0,0,0,0.2) ;
+}
+.post-buttons{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-buttons{
+    display: flex;
+    column-gap: 20px;
+}
+.add-buttons>div>svg{
+height: 30px;
+width: 30px;
+color: rgb(29, 155, 240);
+}
+.add-buttons>div:hover{
+    border-radius: 50%;
+    background-color:rgb(211,211,211,0.2);
+    cursor:pointer;
+}
+.post-button{
+    border-left:1px solid rgb(0,0,0,0.2) ;
+}
+.post-button>button{
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 8px 15px 8px;
+    border: none;
+    border-radius: 20px;
+    color:#fff;
+    background-color:rgb(29, 155, 240,0.8) ;
+}
+.post-button>button:hover{
+    background-color:rgb(29, 155, 240,1) ;
+    cursor: pointer;
+}

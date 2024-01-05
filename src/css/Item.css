@@ -1,21 +1,26 @@
-.item{
-    display: flex;
-    text-decoration: none;
-    color: black;
-    align-items: center;
-    padding: 10px 0px 10px;
+.item {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  padding: 10px 0px 10px;
 }
-.item-content{
-display: flex;
-border-radius: 20px;
-padding: 10px 10px 10px;
-font-size: 30px;
-font-weight: 200;
+.item-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px 10px 10px;
+  font-size: 30px;
+  font-weight: 200;
 }
-.item-content:hover{
-    background-color: grey;
-    color:white
+.icon {
+  display: flex;
 }
-.icon-content{
-    padding-left: 25px;
+.item-content:hover {
+  background-color: rgb(211, 211, 211, 0.2);
+  color: black;
+}
+.icon-content {
+  padding-left: 25px;
 }

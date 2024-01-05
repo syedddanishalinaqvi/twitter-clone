@@ -13,9 +13,8 @@ body {
 }
 .main-page {
   height: 100vh;
-  background-color: grey;
-  border-left: 1px solid;
-  border-right: 1px solid;
+  border-left:1px solid rgb(0,0,0,0.2) ;
+  border-right:1px solid rgb(0,0,0,0.2) ;
   overflow-y: auto;
   max-height: 100vh;
 }
