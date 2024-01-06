@@ -1,0 +1,46 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+.postitem{
+    padding:18px;
+    border-bottom:1px solid rgb(0,0,0,0.2) ;
+}
+.postitem:hover{
+    background-color:rgb(211,211,211,0.2);
+}
+.postitem-content{
+    display: flex;
+    column-gap: 10px;
+}
+.postitem-dp>img{
+    border-radius: 50%;
+}
+.postitem-data{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.name-account{
+    font-size: 18px;
+    font-weight: 200;
+}
+.postitem-buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px 0px;
+}
+.postitem-buttons>div>svg{
+    height: 20px;
+    width: 20px;
+}
+.postitem-buttons>div{
+    display: flex;
+    padding: 4px;
+    border-radius: 20px;
+}
+.postitem-buttons>div:hover{
+    background-color:rgb(29, 155, 240,0.1);
+    color:rgb(29, 155, 240,0.8);
+    cursor: pointer;
+}
