@@ -24,3 +24,9 @@
 .icon-content {
   padding-left: 25px;
 }
+
+@media screen and (max-width:800px){
+    .icon-content{
+      display:none;
+    }
+}
