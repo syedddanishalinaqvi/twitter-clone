@@ -24,40 +24,55 @@ const items = [
     onclick: "",
   },
 ];
+interface User {
+  _id: string;
+  username: string;
+  name: string;
+  avatar: string;
+}
 
-const PostItem = () => {
+interface PostItemProps {
+  Post: {
+    _id: string;
+    data: string;
+    likes: Number;
+    commentsCount: Number;
+    user: User;
+  };
+}
+
+const PostItem = ({ Post }: PostItemProps) => {
   return (
     <Link href="/">
       <div className="postitem">
         <div className="postitem-contents">
           <div className="postitem-content">
             <div className="postitem-dp">
-              <Image src={dp} height={40} width={40} alt="dp"></Image>
+              <Image src={Post.user.avatar} height={40} width={40} alt="dp"></Image>
             </div>
             <div className="postitem-data">
               <div className="name-account">
                 <p>
-                  <b>Name</b>
+                  <b>{Post.user.name}</b>
                 </p>
-                <p>@account</p>
+                <p>@{Post.user.username}</p>
               </div>
               <div className="data">
                 <p>
-                  I think this app looks amazing i should start working more on
-                  this app. Still it looks like it willl not work
+                  {Post.data}
                 </p>
               </div>
             </div>
           </div>
           <div className="postitem-buttons">
-              {items.map((element) => {
-                return (
-                  <div key={element.name} title={element.name}>
-                    <element.icon />
-                  </div>
-                );
-              })}
-            </div>
+            {items.map((element) => {
+              return (
+                <div key={element.name} title={element.name}>
+                  <element.icon />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </Link>

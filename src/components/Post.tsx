@@ -34,6 +34,19 @@ const Post = () => {
     const newHeight = Math.max(minHeight, textarea.scrollHeight - lineHeight);
     textarea.style.height = `${newHeight}px`;
   };
+const handlePost =async(e:any)=>{
+  e.preventDefault();
+  await fetch('http://localhost:4000/api/post/add-post',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    credentials:'include',
+    body:JSON.stringify({data:text})
+  })
+  setText("");
+}
+
   return (
     <div className="post">
       <div className="post-dp">
@@ -60,7 +73,7 @@ const Post = () => {
             }
           </div>
           <div className="post-button">
-            <button>Post</button>
+            <button onClick={(e)=>handlePost(e)}>Post</button>
           </div>
         </div>
       </div>
