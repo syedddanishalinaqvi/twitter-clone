@@ -13,7 +13,7 @@ export default function Home() {
   const [loading,setLoading]=useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.ORIGIN}api/post/all-posts`,{
+    fetch(`https://sweep-tweets-server.vercel.app/api/post/all-posts`,{
       method:'GET',
       headers:{
         'Content-Type':'application/json'

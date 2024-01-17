@@ -42,7 +42,7 @@ const items = [
 const Sidebar = () => {
 
   const handleLogout = async () => {
-    const response = await fetch(`${process.env.ORIGIN}api/user/logout`, {
+    const response = await fetch(`https://sweep-tweets-server.vercel.app/api/user/logout`, {
       method: "POST",
       credentials: "include",
     });

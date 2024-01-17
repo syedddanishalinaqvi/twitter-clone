@@ -42,7 +42,7 @@ const Post = () => {
     const formdata = new FormData();
     formdata?.append("data", text);
     formdata?.append("image", avatar);
-    await fetch(`${process.env.HOST}api/post/add-post`, {
+    await fetch(`https://sweep-tweets-server.vercel.app/api/post/add-post`, {
       method: "POST",
       credentials: "include",
       body: formdata,
@@ -51,7 +51,7 @@ const Post = () => {
     setAvatar("")
   };
   useEffect(()=>{
-    fetch(`${process.env.HOST}api/user/get-user`, {
+    fetch(`https://sweep-tweets-server.vercel.app/api/user/get-user`, {
       method: "GET",
       credentials: "include",
     }).then(res=>res.json())

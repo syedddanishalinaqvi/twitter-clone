@@ -34,7 +34,7 @@ const Login = () => {
   const handleData=async(e:any)=>{
     e.preventDefault();
     console.log(credential);
-    const response=await fetch(`${process.env.ORIGIN}api/user/login`,{
+    const response=await fetch(`https://sweep-tweets-server.vercel.app/api/user/login`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
