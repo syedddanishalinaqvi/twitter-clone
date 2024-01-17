@@ -13,7 +13,7 @@ export default function Home() {
   const [loading,setLoading]=useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/post/all-posts',{
+    fetch(`${process.env.HOST}api/post/all-posts`,{
       method:'GET',
       headers:{
         'Content-Type':'application/json'

@@ -5,6 +5,8 @@ import Image from "next/image";
 import dp from "../assets/dp.jpeg";
 import { CiImageOn } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
+import dotenv from 'dotenv';
+dotenv.config()
 
 interface User{
   avatar:string,
@@ -40,7 +42,7 @@ const Post = () => {
     const formdata = new FormData();
     formdata?.append("data", text);
     formdata?.append("image", avatar);
-    await fetch("http://localhost:4000/api/post/add-post", {
+    await fetch(`${process.env.HOST}api/post/add-post`, {
       method: "POST",
       credentials: "include",
       body: formdata,
@@ -49,7 +51,7 @@ const Post = () => {
     setAvatar("")
   };
   useEffect(()=>{
-    fetch("http://localhost:4000/api/user/get-user", {
+    fetch(`${process.env.HOST}api/user/get-user`, {
       method: "GET",
       credentials: "include",
     }).then(res=>res.json())

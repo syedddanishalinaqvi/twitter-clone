@@ -5,6 +5,8 @@ import { FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
+import dotenv from 'dotenv';
+dotenv.config()
 
 const Login = () => {
   const router=useRouter();
@@ -32,7 +34,7 @@ const Login = () => {
   const handleData=async(e:any)=>{
     e.preventDefault();
     console.log(credential);
-    const response=await fetch('http://localhost:4000/api/user/login',{
+    const response=await fetch(`${process.env.HOST}api/user/login`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'

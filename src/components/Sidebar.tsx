@@ -7,6 +7,8 @@ import { FaRegUser } from "react-icons/fa";
 import { CgMoreO } from "react-icons/cg";
 import { FaTwitter } from "react-icons/fa";
 import Item from "./Item";
+import dotenv from 'dotenv';
+dotenv.config()
 
 const items = [
   {
@@ -40,7 +42,7 @@ const items = [
 const Sidebar = () => {
 
   const handleLogout = async () => {
-    const response = await fetch("http://localhost:4000/api/user/logout", {
+    const response = await fetch(`${process.env.HOST}api/user/logout`, {
       method: "POST",
       credentials: "include",
     });
