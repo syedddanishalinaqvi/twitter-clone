@@ -52,7 +52,7 @@ const Signup = () => {
     formData.append('username',credential.username);
     formData.append('password',credential.password);
     formData.append('email',credential.email);
-    const response=await fetch(`${process.env.HOST}api/user/register`,{
+    const response=await fetch(`${process.env.ORIGIN}api/user/register`,{
       method:'POST',
       body:formData,
     })
