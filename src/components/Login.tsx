@@ -4,9 +4,11 @@ import "../css/Login.css";
 import { FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Loading from "@/components/Loading";
 
 const Login = () => {
   const router=useRouter();
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState({
     show: false,
     content: "Show",
@@ -42,10 +44,13 @@ const Login = () => {
     console.log(responseData)
     alert(responseData?.message);
     if(responseData.message==="Logged In successfull"){
+      setLoading(true);
       router.push('/Home')
     }
   }
   return (
+    loading?(<Loading/>):
+    (
     <div className="login">
       <div className="login-image">
         <FaTwitter />
@@ -81,6 +86,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    )
   );
 };
 

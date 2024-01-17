@@ -27,6 +27,11 @@
 
 @media screen and (max-width:800px){
     .icon-content{
-      display:none;
+      padding-left:0;
+      font-size: 12px;
+  font-weight: 600;
+    }
+    .item-content{
+      flex-direction: column;
     }
 }

@@ -39,12 +39,20 @@
     display: flex;
     column-gap: 20px;
 }
-.add-buttons>div>svg{
+.deselect-image{
+    display: flex;
+    cursor:pointer;
+}
+.deselect-image>svg{
+    height: 30px;
+    width: 30px;
+}
+.add-buttons>label>svg{
 height: 30px;
 width: 30px;
 color: rgb(29, 155, 240);
 }
-.add-buttons>div:hover{
+.add-buttons>label:hover{
     border-radius: 50%;
     background-color:rgb(211,211,211,0.2);
     cursor:pointer;

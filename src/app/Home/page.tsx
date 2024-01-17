@@ -5,13 +5,15 @@ import Post from "@/components/Post";
 import PostItem from "@/components/PostItem";
 import { useEffect, useState } from "react";
 import dotenv from "dotenv";
+import Loading from "@/components/Loading";
 dotenv.config();
 
 export default function Home() {
   const [post, setPost] = useState([]);
+  const [loading,setLoading]=useState(true);
 
   useEffect(() => {
-    const newPost=async()=>await fetch('http://localhost:4000/api/post/all-posts',{
+    fetch('http://localhost:4000/api/post/all-posts',{
       method:'GET',
       headers:{
         'Content-Type':'application/json'
@@ -19,23 +21,22 @@ export default function Home() {
       credentials: 'include'
     })
       .then((response) => response.json())
-      .then(res=>setPost(res.data));
-
-      const intervalId = setInterval(newPost, 5000); 
-      
-      return () => clearInterval(intervalId);
+      .then(res=>setPost(res.data.reverse()));
+      setLoading(false);
   });
   return (
+    
     <div className="page">
-      <Post/>
+       <Post/>
       <div className="page-content">
-        {post && 
+      {loading ?<Loading/>:
+        (post && 
           post.map((element:any)=>{
             return(<div key={element._id} className="posts">
             <PostItem Post={element} />
             </div>)
           })
-        }
+        )}
       </div>
     </div>
   );

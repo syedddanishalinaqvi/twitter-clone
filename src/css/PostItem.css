@@ -15,6 +15,7 @@ a{
 }
 .postitem-dp>img{
     border-radius: 50%;
+    object-fit: cover;
 }
 .postitem-data{
     display: flex;

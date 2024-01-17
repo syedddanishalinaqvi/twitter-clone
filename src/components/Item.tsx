@@ -10,13 +10,16 @@ interface ItemProps {
     href: string;
     icon: IconType;
   };
+  handlelogout:()=>void
 }
 
-const Item = ({ item }: ItemProps) => {
+const Item = ({ item,handlelogout }: ItemProps) => {
   const { name, href, icon: IconComponent } = item;
+
   return (
     <Link
       href={href}
+      onClick={name==='Logout'?handlelogout:undefined}
       as={typeof href === "string" ? href : undefined}
       className="item"
     >

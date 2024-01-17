@@ -1,30 +1,26 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/Post.css";
 import Image from "next/image";
 import dp from "../assets/dp.jpeg";
 import { CiImageOn } from "react-icons/ci";
-import { PiSmileySticker } from "react-icons/pi";
-import Link from "next/link";
-
-const items=[
-    {
-        name:"Add image",
-        icon:CiImageOn,
-        onClick:"onclick",
-    },
-    {
-        name:"Sticker",
-        icon:PiSmileySticker,
-        onClick:"onclick",
-    },
-]
+import { IoClose } from "react-icons/io5";
 
 const Post = () => {
   const [text, setText] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const handleInputChange = (event: any) => {
     setText(event.target.value);
+  };
+  const handleImageChange = (event: any) => {
+    const file = event.target.files[0];
+    if (file){
+      setAvatar(file);
+    }
+  };
+  const deselectImage = () => {
+    setAvatar("");
   };
 
   const calculateTextareaHeight = (event: any) => {
@@ -34,23 +30,26 @@ const Post = () => {
     const newHeight = Math.max(minHeight, textarea.scrollHeight - lineHeight);
     textarea.style.height = `${newHeight}px`;
   };
-const handlePost =async(e:any)=>{
-  e.preventDefault();
-  await fetch('http://localhost:4000/api/post/add-post',{
-    method:'POST',
-    headers:{
-      'Content-Type':'application/json'
-    },
-    credentials:'include',
-    body:JSON.stringify({data:text})
-  })
-  setText("");
-}
+  const handlePost = async (e: any) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata?.append("data", text);
+    formdata?.append("image", avatar);
+    await fetch("http://localhost:4000/api/post/add-post", {
+      method: "POST",
+      credentials: "include",
+      body: formdata,
+    });
+    setText("");
+    setAvatar("")
+  };
 
   return (
     <div className="post">
       <div className="post-dp">
-        <Link href="/"><Image src={dp} height={50} width={50} alt="dp" /></Link>
+        <a>
+          <Image src={dp} height={50} width={50} style={{ objectFit: 'cover' }} alt="dp" />
+        </a>
       </div>
       <div className="post-content">
         <div className="text-area">
@@ -66,14 +65,23 @@ const handlePost =async(e:any)=>{
         </div>
         <div className="post-buttons">
           <div className="add-buttons">
-            {
-                items.map((element)=>{
-                    return(<div  key={element.name} title={element.name}><element.icon/></div>)
-                })
-            }
+            <input
+              id="image"
+              onChange={(event) => {
+                handleImageChange(event);
+              }}
+              style={{ display: "none" }}
+              type="file"
+              accept="image/*"
+            />
+            <label htmlFor="image" title="Add image">
+              <CiImageOn />
+            </label>
           </div>
+          {avatar.length===0?0:1}&ensp;Files
+          <div className="deselect-image" onClick={deselectImage}><IoClose/></div>
           <div className="post-button">
-            <button onClick={(e)=>handlePost(e)}>Post</button>
+            <button onClick={(e) => handlePost(e)}>Post</button>
           </div>
         </div>
       </div>

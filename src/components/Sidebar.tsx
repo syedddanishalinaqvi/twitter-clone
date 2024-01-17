@@ -1,72 +1,84 @@
-'use client'
-import React from 'react'
-import '../css/Sidebar.css'
+"use client";
+import React from "react";
+import "../css/Sidebar.css";
 import { RiHome7Line } from "react-icons/ri";
 import { IoSearchSharp } from "react-icons/io5";
-import { GoBell } from "react-icons/go";
-import { LuMessageSquare } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa";
 import { CgMoreO } from "react-icons/cg";
 import { FaTwitter } from "react-icons/fa";
-import Item from './Item';
-import Image from 'next/image';
+import Item from "./Item";
 
-const items=[
+const items = [
   {
-    name:"Twitter",
-    href:"/",
-    icon:FaTwitter
+    name: "Twitter",
+    href: "/Home",
+    icon: FaTwitter,
   },
   {
-    name:"Home",
-    href:"/",
-    icon:RiHome7Line
+    name: "Home",
+    href: "/Home",
+    icon: RiHome7Line,
   },
   {
-    name:"Explore",
-    href:"/",
-    icon:IoSearchSharp
+    name: "Explore",
+    href: "/Home",
+    icon: IoSearchSharp,
   },
   {
-    name:"Notification",
-    href:"/",
-    icon:GoBell
+    name: "Profile",
+    href: "/Home",
+    icon: FaRegUser,
   },
   {
-    name:"Messages",
-    href:"/",
-    icon:LuMessageSquare
+    name: "Logout",
+    href: "/Home",
+    icon: CgMoreO,
+    onclick: null,
   },
-  {
-    name:"Profile",
-    href:"/",
-    icon:FaRegUser
-  },
-  {
-    name:"More",
-    href:"/",
-    icon:CgMoreO
-  },
-]
+];
 
 const Sidebar = () => {
+
+  const handleLogout = async () => {
+    const response = await fetch("http://localhost:4000/api/user/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+    const message = await response.json();
+    console.log(message.message);
+    if (message.message === "Successfully Logged out") {
+      window.location.href='/';
+    }
+  };
   return (
     <div className="sidebar">
       <div className="sidebar-content">
-      <div className="home-icon">
-        <Item item={items[0]}/>
-      </div>
-      <div className="items">
-        {
-          items.map((element)=>{
-            return(element.name!=='Twitter'&&<Item key={element.name} item={element}/>)
-          })
-        }
-      </div>
+        <div className="home-icon">
+          <Item handlelogout={() => {}} item={items[0]} />
+        </div>
+        <div className="items">
+          {items.map((element) => {
+            return (
+              element.name !== "Twitter" &&
+              (element.name === "Logout" ? (
+                <Item
+                  key={element.name}
+                  handlelogout={handleLogout}
+                  item={element}
+                />
+              ) : (
+                <Item
+                  key={element.name}
+                  handlelogout={() => {}}
+                  item={element}
+                />
+              ))
+            );
+          })}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
-
+export default Sidebar;
