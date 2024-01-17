@@ -36,9 +36,6 @@ const Login = () => {
     console.log(credential);
     const response=await fetch(`https://sweep-tweets-server.vercel.app/api/user/login`,{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
       credentials:'include',
       body:JSON.stringify(credential),
     })
