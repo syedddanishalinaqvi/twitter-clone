@@ -54,14 +54,17 @@ const Signup = () => {
     formData.append('email',credential.email);
     const response=await fetch(`https://sweep-tweets-server.vercel.app/api/user/register`,{
       method:'POST',
+      headers:{
+        'Content-Type':'multipart/form-data'
+      },
       body:formData,
     })
+    setLoading(false);
     const responseData=await response.json();
     alert(responseData.message);
     if(responseData.message==="Signed Up. Moving to Login"){
       window.location.href='/';
     }
-    setLoading(false);
   }
 
   return (
