@@ -56,12 +56,12 @@ const Signup = () => {
       method:'POST',
       body:formData,
     })
-    setLoading(false);
     const responseData=await response.json();
     alert(responseData.message);
     if(responseData.message==="Signed Up. Moving to Login"){
       window.location.href='/';
     }
+    setLoading(false);
   }
 
   return (
