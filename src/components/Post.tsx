@@ -1,14 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Post.css";
 import Image from "next/image";
 import dp from "../assets/dp.jpeg";
 import { CiImageOn } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 
+interface User{
+  avatar:string,
+}
+
 const Post = () => {
   const [text, setText] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [user,setUser]=useState<User>({avatar:""});
 
   const handleInputChange = (event: any) => {
     setText(event.target.value);
@@ -43,12 +48,19 @@ const Post = () => {
     setText("");
     setAvatar("")
   };
+  useEffect(()=>{
+    fetch("http://localhost:4000/api/user/get-user", {
+      method: "GET",
+      credentials: "include",
+    }).then(res=>res.json())
+    .then(newRes=>setUser(newRes.data));
+  },[])
 
   return (
     <div className="post">
       <div className="post-dp">
         <a>
-          <Image src={dp} height={50} width={50} style={{ objectFit: 'cover' }} alt="dp" />
+          <Image src={user.avatar} height={50} width={50} style={{ objectFit: 'cover' }} alt="dp" />
         </a>
       </div>
       <div className="post-content">

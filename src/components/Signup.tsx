@@ -4,10 +4,12 @@ import "../css/Signup.css";
 import { FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import dotenv from "dotenv";
+import Loading from "./Loading";
 
 dotenv.config();
 
 const Signup = () => {
+  const [loading,setLoading]=useState(false);
   const [checkPassword, setCheckPassword] = useState({
     show: false,
     content: "Show",
@@ -43,6 +45,7 @@ const Signup = () => {
 
   const handleData=async(e:any)=>{
     e.preventDefault();
+    setLoading(true);
     const formData=new FormData();
     formData.append('avatar',avatar);
     formData.append('name',credential.name);
@@ -54,10 +57,15 @@ const Signup = () => {
       body:formData,
     })
     const responseData=await response.json();
+    setLoading(false);
     alert(responseData.message);
+    if(responseData.message==="Signed Up. Moving to Login"){
+      window.location.href='/';
+    }
   }
 
   return (
+    loading?<Loading/>:
     <div className="signup">
       <div className="signup-image">
         <FaTwitter />
