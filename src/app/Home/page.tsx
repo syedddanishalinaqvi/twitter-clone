@@ -23,7 +23,7 @@ export default function Home() {
       .then((response) => response.json())
       .then(res=>setPost(res.data.reverse()));
       setLoading(false);
-  });
+  },[]);
   return (
     
     <div className="page">
