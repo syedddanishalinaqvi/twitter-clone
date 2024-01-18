@@ -42,7 +42,6 @@ const Post = ({trigger}:any) => {
     const formdata = new FormData();
     formdata?.append("data", text);
     formdata?.append("image", avatar);
-    trigger(true);
     await fetch(`https://sweep-tweets-server.vercel.app/api/post/add-post`, {
       method: "POST",
       credentials: "include",
@@ -50,7 +49,7 @@ const Post = ({trigger}:any) => {
     });
     setText("");
     setAvatar("");
-    trigger(false)
+    trigger(true);
   };
   useEffect(()=>{
     fetch(`https://sweep-tweets-server.vercel.app/api/user/get-user`, {

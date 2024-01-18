@@ -24,7 +24,8 @@ export default function Home() {
       .then((response) => response.json())
       .then(res=>setPost(res.data.reverse()));
       setLoading(false);
-  },[]);
+      setReloadTrigger(false);
+  },[reloadTrigger]);
   return (
     
     <div className="page">
