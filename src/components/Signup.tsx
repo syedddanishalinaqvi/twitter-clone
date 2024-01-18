@@ -54,9 +54,6 @@ const Signup = () => {
     formData.append('email',credential.email);
     const response=await fetch(`https://sweep-tweets-server.vercel.app/api/user/register`,{
       method:'POST',
-      headers:{
-        'Content-Type':'multipart/form-data'
-      },
       body:formData,
     })
     setLoading(false);
