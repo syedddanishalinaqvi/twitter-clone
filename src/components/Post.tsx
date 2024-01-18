@@ -12,7 +12,7 @@ interface User{
   avatar:string,
 }
 
-const Post = () => {
+const Post = ({trigger}:any) => {
   const [text, setText] = useState("");
   const [avatar, setAvatar] = useState("");
   const [user,setUser]=useState<User>({avatar:""});
@@ -42,13 +42,15 @@ const Post = () => {
     const formdata = new FormData();
     formdata?.append("data", text);
     formdata?.append("image", avatar);
+    trigger(true);
     await fetch(`https://sweep-tweets-server.vercel.app/api/post/add-post`, {
       method: "POST",
       credentials: "include",
       body: formdata,
     });
     setText("");
-    setAvatar("")
+    setAvatar("");
+    trigger(false)
   };
   useEffect(()=>{
     fetch(`https://sweep-tweets-server.vercel.app/api/user/get-user`, {

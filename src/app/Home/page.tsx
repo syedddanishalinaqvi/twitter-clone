@@ -11,6 +11,7 @@ dotenv.config();
 export default function Home() {
   const [post, setPost] = useState([]);
   const [loading,setLoading]=useState(true);
+  const [reloadTrigger, setReloadTrigger] = useState(false);
 
   useEffect(() => {
     fetch(`https://sweep-tweets-server.vercel.app/api/post/all-posts`,{
@@ -27,7 +28,7 @@ export default function Home() {
   return (
     
     <div className="page">
-       <Post/>
+       <Post trigger={setReloadTrigger}/>
       <div className="page-content">
       {loading ?<Loading/>:
         (post && 
