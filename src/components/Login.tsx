@@ -33,7 +33,7 @@ const Login = () => {
 };
   const handleData=async(e:any)=>{
     e.preventDefault();
-    console.log(credential);
+    setLoading(true);
     const response=await fetch(`https://sweep-tweets-server.vercel.app/api/user/login`,{
       method:'POST',
       headers:{
@@ -42,8 +42,8 @@ const Login = () => {
       credentials:'include',
       body:JSON.stringify(credential),
     })
+    setLoading(false);
     const responseData=await response.json();
-    console.log(responseData)
     alert(responseData?.message);
     if(responseData.message==="Logged In successfull"){
       setLoading(true);
@@ -63,10 +63,10 @@ const Login = () => {
         </p>
         <div className="login-data">
           <label>Username</label>
-          <input onChange={(e)=>changeData(e)} name="username" type="text" />
+          <input onChange={(e)=>changeData(e)} name="username" type="text" required />
           <div className="login-password">
             <label>Password</label>
-            <input onChange={(e)=>changeData(e)} name="password" type={password.type} />
+            <input onChange={(e)=>changeData(e)} name="password" type={password.type} required />
             <div
               onClick={(e) => {
                 showPassword(e);

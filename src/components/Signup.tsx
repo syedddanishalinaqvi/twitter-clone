@@ -5,6 +5,7 @@ import { FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import dotenv from "dotenv";
 import Loading from "./Loading";
+import uploadUsingCloudinary from '../utils/cloudinary.js'
 
 dotenv.config();
 
@@ -36,10 +37,12 @@ const Signup = () => {
       setCredential({ ...credential, [e.target.name]: e.target.value });
   };
 
-  const imageChange=(e:any)=>{
+  const imageChange=async(e:any)=>{
     const file=e.target.files[0];
     if(file){
-      setAvatar(file);
+      const imageUrl= await uploadUsingCloudinary(file);
+      setAvatar(imageUrl);
+
     }
   }
 
