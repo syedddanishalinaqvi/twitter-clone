@@ -5,7 +5,7 @@ import { FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import dotenv from "dotenv";
 import Loading from "./Loading";
-import uploadUsingCloudinary from '../utils/cloudinary.js'
+
 
 dotenv.config();
 
@@ -40,17 +40,26 @@ const Signup = () => {
   const imageChange=async(e:any)=>{
     const file=e.target.files[0];
     if(file){
-      const imageUrl= await uploadUsingCloudinary(file);
-      setAvatar(imageUrl);
-
+      setAvatar(file);
     }
   }
 
   const handleData=async(e:any)=>{
     e.preventDefault();
     setLoading(true);
+    
+    try{
+      const formImage=new FormData();
+    formImage.append('file',avatar);
+    formImage.append('upload_preset', 'r3ldobdk');
+    const imageUrl=await fetch(`https://api.cloudinary.com/v1_1/dbcezfmni/image/upload`,{
+      method:'POST',
+      body:formImage,
+    })
+    const res=await imageUrl.json(); 
+    console.log(res);
     const formData=new FormData();
-    formData.append('avatar',avatar);
+    formData.append('avatar',res.url);
     formData.append('name',credential.name);
     formData.append('username',credential.username);
     formData.append('password',credential.password);
@@ -59,12 +68,16 @@ const Signup = () => {
       method:'POST',
       body:formData,
     })
-    setLoading(false);
     const responseData=await response.json();
     alert(responseData.message);
     if(responseData.message==="Signed Up. Moving to Login"){
       window.location.href='/';
     }
+  }
+  catch{
+    setLoading(false);
+    alert("something went wrong Try again")
+  }
   }
 
   return (
