@@ -47,8 +47,6 @@ const Signup = () => {
   const handleData=async(e:any)=>{
     e.preventDefault();
     setLoading(true);
-    
-    try{
       const formImage=new FormData();
     formImage.append('file',avatar);
     formImage.append('upload_preset', 'r3ldobdk');
@@ -73,11 +71,7 @@ const Signup = () => {
     if(responseData.message==="Signed Up. Moving to Login"){
       window.location.href='/';
     }
-  }
-  catch{
-    setLoading(false);
-    alert("something went wrong Try again")
-  }
+  
   }
 
   return (
