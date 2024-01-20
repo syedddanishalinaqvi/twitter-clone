@@ -49,6 +49,9 @@ const Post = ({trigger}:any) => {
     const res=await imageUrl?.json();
     await fetch(`https://sweep-tweets-server.vercel.app/api/post/add-post`, {
       method: "POST",
+      headers:{
+        'Content-Type':'application/json'
+      },
       credentials: "include",
       body: JSON.stringify({data:text,image:res.url}),
     });
