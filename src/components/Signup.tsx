@@ -71,6 +71,9 @@ const Signup = () => {
     if(responseData.message==="Signed Up. Moving to Login"){
       window.location.href='/';
     }
+    else{
+      setLoading(false);
+    }
   
   }
 
