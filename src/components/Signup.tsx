@@ -67,6 +67,8 @@ const Signup = () => {
       body:formData,
     })
     const responseData=await response.json();
+    console.log(responseData);
+    console.log(formData);
     alert(responseData.message);
     if(responseData.message==="Signed Up. Moving to Login"){
       window.location.href='/';
