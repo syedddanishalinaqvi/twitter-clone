@@ -57,6 +57,9 @@ const Signup = () => {
     const res=await imageUrl.json(); 
     const response=await fetch(`https://sweep-tweets-server.vercel.app/api/user/register`,{
       method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
       body:JSON.stringify({username:credential.username,password:credential.password,name:credential.name,email:credential.email,avatar:res.url}),
     })
     const responseData=await response.json();
