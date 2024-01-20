@@ -39,13 +39,18 @@ const Post = ({trigger}:any) => {
   };
   const handlePost = async (e: any) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata?.append("data", text);
-    formdata?.append("image", avatar);
+    const formImage=new FormData();
+    formImage?.append('file',avatar);
+    formImage?.append('upload_preset', 'r3ldobdk');
+    const imageUrl=await fetch(`https://api.cloudinary.com/v1_1/dbcezfmni/image/upload`,{
+      method:'POST',
+      body:formImage,
+    })
+    const res=await imageUrl?.json();
     await fetch(`https://sweep-tweets-server.vercel.app/api/post/add-post`, {
       method: "POST",
       credentials: "include",
-      body: formdata,
+      body: JSON.stringify({data:text,image:res.url}),
     });
     setText("");
     setAvatar("");
