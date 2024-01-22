@@ -74,3 +74,25 @@
     background-color:rgb(29, 155, 240,1) ;
     cursor: pointer;
 }
+
+@media screen and (max-width:800px){
+    .signup{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .signup-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10vh;
+    }
+    .signup-image>svg{
+        height: 40px;
+    width: 40px;
+    }
+    .signup-content{
+        height: 90vh;
+    }
+}

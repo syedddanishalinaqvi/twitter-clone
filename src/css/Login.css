@@ -77,10 +77,17 @@
 @media screen and (max-width:800px){
     .login{
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     .login-image{
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 30vh;
+    }
+    .login-content{
+        height: 70vh;
     }
 }

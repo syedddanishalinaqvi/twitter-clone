@@ -45,3 +45,9 @@ a{
     color:rgb(29, 155, 240,0.8);
     cursor: pointer;
 }
+
+@media screen and (max-width:800px){
+    .postitem-content{
+        flex-direction: column;
+    }
+}
