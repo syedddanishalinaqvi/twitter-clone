@@ -50,7 +50,7 @@ a{
     .postitem-content{
         flex-direction: column;
     }
-    .data{
+    .data>img{
         height: 100%;
         width: 100%;
     }
